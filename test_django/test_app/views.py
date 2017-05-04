@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
 
 from django.shortcuts import render
@@ -5,17 +7,17 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    a = request.GET['a'].encode('utf-8')
-    b = request.GET['b'].encode('utf-8')
-    res_str = str.format("".encode('utf-8'))
-                         # , b = %s, a + b = %s' % (str(a), str(b), '1'))
-    return HttpResponse('hello world\n' + res_str)
+    return HttpResponse('hello world' )
 
 def test(request):
     a = request.GET['a']
     b = request.GET['b']
     print 'test' + a
-    res_str = ''
-    res_str = str.format('a= %d' % int(1))
-    return HttpResponse('hheheh' + res_str)
+    print 'a = {}, b = {}, a+b = {}'.format(a, b, int(a)+int(b))
+    res_str = 'a = {}, b = {}, a+b = {}'.format(a, b, int(a)+int(b))
+    return HttpResponse('hello world!<br>' + res_str)
+
+def render_test(request):
+    # return HttpResponse('hello world!<br>')
+    return render(request, 'home.html')
 # Create your views here.
